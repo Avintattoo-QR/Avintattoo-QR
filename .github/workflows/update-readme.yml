@@ -42,7 +42,7 @@ jobs:
           echo "- **עדכון אחרון:** $LAST_UPDATE" >> README.md
           echo "" >> README.md
           echo "---" >> README.md
-          echo "💡 *לשינוי יעד ה-QR, יש לערוך את קובץ ה-index.html במאגר זה.*" >> README.md
+          
 
       - name: Commit and Push changes
         run: |
