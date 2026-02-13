@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מפנה לאתר Avintattoo...</title>
+    <title>Redirecting to Avintattoo...</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VPH6LG668"></script>
@@ -12,32 +12,21 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // הגדרת המעקב
-      gtag('config', 'G-4VPH6LG668', { 'anonymize_ip': true });
+      gtag('config', 'G-4VPH6LG668');
 
-      // פונקציית הפניה חכמה
       function performRedirect() {
-          // הכתובת הסופית עם מעקב UTM כדי שתראה את זה באנליטיקס של האתר
-          const targetUrl = "https://avintattoo.com/?utm_source=qr_code&utm_medium=print&utm_campaign=dynamic_qr";
+          // יעד ההפניה שביקשת
+          const targetUrl = "https://avintattoo.com/?utm_source=qr_code&utm_medium=print";
           
-          // המתנה של 700 מילישניות כדי להבטיח שהמעקב נשלח
           setTimeout(function() {
               window.location.href = targetUrl;
           }, 700);
       }
     </script>
 </head>
-<body onload="performRedirect()" style="background-color: #ffffff; color: #333; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
-
+<body onload="performRedirect()" style="background-color: #ffffff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
     <div style="text-align: center;">
-        <!-- ניתן להוסיף כאן לוגו קטן אם תרצה -->
         <h2 style="font-weight: 300;">מעביר אותך לסטודיו...</h2>
-        <p style="color: #888;">מיד נגיע לאתר של Avintattoo</p>
-        
-        <noscript>
-            <p>נראה שה-JavaScript כבוי בדפדפן שלך. <a href="https://avintattoo.com/">לחץ כאן כדי להיכנס לאתר</a>.</p>
-        </noscript>
     </div>
-
 </body>
 </html>
