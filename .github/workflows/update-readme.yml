@@ -1,18 +1,19 @@
-name: Auto Update README from Index
+name: Auto Update README with Avintattoo QR
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'index.html' # הבוט ירוץ רק אם שינית את קובץ האינדקס
-  workflow_dispatch: # מאפשר להפעיל גם ידנית
+      - 'index.html'
+      - 'Avintattoo-QR.png' # הבוט ירוץ אם תשנה את הקישור או את התמונה
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # חובה כדי שהבוט יוכל לכתוב ל-README
+      contents: write
 
     steps:
       - name: Checkout code
@@ -20,37 +21,33 @@ jobs:
 
       - name: Extract URL and Update README
         run: |
-          # 1. זיהוי הכתובת מתוך קובץ ה-index.html
-          # הפקודה מחפשת את הטקסט שבין המרכאות אחרי targetUrl
-          EXTRACTED_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html)
+          # 1. שליפת יעד ההפניה מתוך index.html
+          TARGET_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html)
+          DISPLAY_URL=$(echo $TARGET_URL | cut -d'?' -f1)
           
-          # 2. ניקוי הכתובת מתגיות UTM לצורך תצוגה יפה ב-README (אופציונלי)
-          DISPLAY_URL=$(echo $EXTRACTED_URL | cut -d'?' -f1)
-          
-          # 3. קבלת זמן העדכון הנוכחי
+          # 2. זמן עדכון אחרון
           LAST_UPDATE=$(date +'%d/%m/%Y %H:%M')
 
-          # 4. כתיבה מחדש של קובץ ה-README.md
-          echo "# 📲 Avintattoo Dynamic QR System" > README.md
+          # 3. כתיבת קובץ ה-README.md
+          echo "# 📲 מערכת QR דינמית - Avintattoo" > README.md
           echo "" >> README.md
-          echo "הבוט זיהה עדכון בכתובת ההפניה!" >> README.md
-          echo "" >> README.md
-          echo "### 📍 יעד נוכחי:" >> README.md
-          echo "[$DISPLAY_URL]($DISPLAY_URL)" >> README.md
-          echo "" >> README.md
-          echo "---" >> README.md
-          echo "🔍 **פרטי הפניה מלאים:**" >> README.md
-          echo "\`$EXTRACTED_URL\`" >> README.md
-          echo "" >> README.md
-          echo "📅 **עדכון אחרון:** $LAST_UPDATE" >> README.md
+          echo "### 🤳 קוד ה-QR לסריקה:" >> README.md
+          # שימוש בשם הקובץ המדויק שלך לתצוגה
+          echo "![Avintattoo QR](./Avintattoo-QR.png)" >> README.md
           echo "" >> README.md
           echo "---" >> README.md
-          echo "*הדף הזה עודכן אוטומטית על ידי GitHub Actions.*" >> README.md
+          echo "### ℹ️ פרטי הפניה" >> README.md
+          echo "- **סטטוס:** פעיל ✅" >> README.md
+          echo "- **יעד נוכחי:** [$DISPLAY_URL]($DISPLAY_URL)" >> README.md
+          echo "- **עדכון אחרון:** $LAST_UPDATE" >> README.md
+          echo "" >> README.md
+          echo "---" >> README.md
+          echo "💡 *לשינוי יעד ה-QR, יש לערוך את קובץ ה-index.html במאגר זה.*" >> README.md
 
       - name: Commit and Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Bot: Auto-detected new URL: $DISPLAY_URL" || echo "No changes to commit"
+          git commit -m "Bot: Updated README with Avintattoo-QR.png" || echo "No changes to commit"
           git push
