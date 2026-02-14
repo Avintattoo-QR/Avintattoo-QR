@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'index.html'
-      - 'Avintattoo-QR.png' # הבוט ירוץ אם תשנה את הקישור או את התמונה
+      - 'Avintattoo-QR.png'
   workflow_dispatch:
 
 jobs:
@@ -22,32 +22,51 @@ jobs:
       - name: Extract URL and Update README
         run: |
           # 1. שליפת יעד ההפניה מתוך index.html
-          TARGET_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html)
+          TARGET_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html || echo "Unknown")
+          # ניקוי פרמטרי UTM לתצוגה יפה
           DISPLAY_URL=$(echo $TARGET_URL | cut -d'?' -f1)
           
-          # 2. זמן עדכון אחרון
-          LAST_UPDATE=$(date +'%d/%m/%Y %H:%M')
+          # 2. הגדרת כתובות המערכת
+          LIVE_SITE_URL="https://avintattoo-qr.github.io/Avintattoo-QR/"
+          REPO_URL="https://github.com/${{ github.repository }}"
+          
+          # 3. זמן עדכון אחרון (זמן ישראל בקירוב)
+          LAST_UPDATE=$(date -u -d "+2 hours" +'%d/%m/%Y %H:%M')
 
-          # 3. כתיבת קובץ ה-README.md
+          # 4. כתיבת קובץ ה-README.md בעיצוב משופר
           echo "# 📲 מערכת QR דינמית - Avintattoo" > README.md
           echo "" >> README.md
-          echo "### 🤳 קוד ה-QR לסריקה:" >> README.md
-          # שימוש בשם הקובץ המדויק שלך לתצוגה
-          echo "![Avintattoo QR](./Avintattoo-QR.png)" >> README.md
+          echo "מערכת זו מאפשרת ניהול קוד QR פיזי עם יעד הפניה משתנה ללא צורך בהדפסה מחדש." >> README.md
+          echo "" >> README.md
+          echo "## 🤳 קוד ה-QR הפעיל" >> README.md
+          echo "סרקו את הקוד למטה כדי להגיע ליעד המעודכן:" >> README.md
+          echo "" >> README.md
+          echo '<p align="center">' >> README.md
+          echo '  <img src="./Avintattoo-QR.png" width="300" alt="Avintattoo QR Code">' >> README.md
+          echo '</p>' >> README.md
           echo "" >> README.md
           echo "---" >> README.md
-          echo "### ℹ️ פרטי הפניה" >> README.md
-          echo "- **סטטוס:** פעיל ✅" >> README.md
-          echo "- **יעד נוכחי:** [$DISPLAY_URL]($DISPLAY_URL)" >> README.md
-          echo "- **עדכון אחרון:** $LAST_UPDATE" >> README.md
+          echo "" >> README.md
+          echo "## 📊 מידע טכני וסטטוס" >> README.md
+          echo "| נתון | פרטים |" >> README.md
+          echo "| :--- | :--- |" >> README.md
+          echo "| **סטטוס הפניה** | פעיל ✅ |" >> README.md
+          echo "| **יעד הפניה נוכחי** | [$DISPLAY_URL]($TARGET_URL) |" >> README.md
+          echo "| **כתובת האתר (Live)** | [$LIVE_SITE_URL]($LIVE_SITE_URL) |" >> README.md
+          echo "| **עדכון אחרון** | $LAST_UPDATE |" >> README.md
+          echo "| **מאגר קוד (Repository)** | [קישור למאגר]($REPO_URL) |" >> README.md
           echo "" >> README.md
           echo "---" >> README.md
-          
+          echo "## 🛠 איך זה עובד?" >> README.md
+          echo "1. קוד ה-QR הפיזי מפנה לכתובת של **GitHub Pages**." >> README.md
+          echo "2. דף הנחיתה מריץ סקריפט הפניה אוטומטי ליעד שמוגדר בקוד." >> README.md
+          echo "3. כדי לשנות את יעד ה-QR, פשוט עורכים את ה-URL בתוך קובץ \`index.html\`." >> README.md
+          echo "4. הבוט מעדכן את ה-README הזה באופן אוטומטי לאחר כל שינוי." >> README.md
 
       - name: Commit and Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Bot: Updated README with Avintattoo-QR.png" || echo "No changes to commit"
+          git commit -m "Bot: Updated README with links, stats and timestamp" || echo "No changes to commit"
           git push
