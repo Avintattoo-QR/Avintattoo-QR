@@ -1,23 +1,20 @@
 # 📲 מערכת QR דינמית - Avintattoo
 
-מערכת זו מאפשרת ניהול קוד QR פיזי עם יעד הפניה משתנה ללא צורך בהדפסה מחדש.
+ניהול הפניה דינמית עבור קוד QR פיזי.
 
-## 🤳 קוד ה-QR הפעיל
-סרקו את הקוד למטה כדי להגיע ליעד המעודכן:
-
+## 🤳 קוד ה-QR לסריקה
 <p align="center">
   <img src="./Avintattoo-QR.png" width="300" alt="Avintattoo QR Code">
 </p>
 
 ---
 
-## 📊 מידע טכני וסטטוס
+## 📊 סטטוס ומידע
 | נתון | פרטים |
 | :--- | :--- |
-| **סטטוס הפניה** | פעיל ✅ |
-| **יעד הפניה נוכחי** | [https://avintattoo.com/](https://avintattoo.com/?utm_source=qr_code&utm_medium=print) |
-| **כתובת האתר (Live)** | [https://avintattoo-qr.github.io/Avintattoo-QR/](https://avintattoo-qr.github.io/Avintattoo-QR/) |
-| **עדכון אחרון** | 14/02/2026 10:08 |
-| **מאגר קוד (Repository)** | [קישור למאגר](https://github.com/Avintattoo-QR/Avintattoo-QR) |
+| **סטטוס** | פעיל ✅ |
+| **יעד הפניה** | [https://avintattoo.com/](https://avintattoo.com/?utm_source=qr_code&utm_medium=print) |
+| **כתובת ה-QR (Live)** | [https://avintattoo-qr.github.io/Avintattoo-QR/](https://avintattoo-qr.github.io/Avintattoo-QR/) |
+| **עדכון אחרון** | 14/02/2026 10:11 |
 
 ---
