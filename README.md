@@ -21,8 +21,3 @@
 | **מאגר קוד (Repository)** | [קישור למאגר](https://github.com/Avintattoo-QR/Avintattoo-QR) |
 
 ---
-## 🛠 איך זה עובד?
-1. קוד ה-QR הפיזי מפנה לכתובת של **GitHub Pages**.
-2. דף הנחיתה מריץ סקריפט הפניה אוטומטי ליעד שמוגדר בקוד.
-3. כדי לשנות את יעד ה-QR, פשוט עורכים את ה-URL בתוך קובץ `index.html`.
-4. הבוט מעדכן את ה-README הזה באופן אוטומטי לאחר כל שינוי.
