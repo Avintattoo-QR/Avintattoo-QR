@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avintattoo | מעביר אותך לסטודיו...</title>
+    <title>Avintattoo | Redirecting to Studio...</title>
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VPH6LG668"></script>
     <script>
+      /* Standard Google Analytics initialization. 
+         Variable names and logic kept in English for compatibility.
+      */
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-4VPH6LG668');
 
+      // Configuration for your specific Measurement ID
+      gtag('config', 'G-4VPH6LG668', {
+          'anonymize_ip': true,
+          'cookie_flags': 'SameSite=None;Secure'
+      });
+
+      /**
+       * Logic to perform the automatic redirect.
+       * Added a small safety delay to ensure GA event is sent.
+       */
       function performRedirect() {
           const targetUrl = "https://avintattoo.com/?utm_source=qr_code&utm_medium=print";
           
+          // Using a 1200ms delay to allow the animation and tracker to fire
           setTimeout(function() {
               window.location.href = targetUrl;
-          }, 1200); // הגדלתי מעט כדי לתת לאנימציה ול-GA לעבוד חלק
+          }, 1200);
       }
     </script>
 
     <style>
         body {
-            background-color: #0a0a0a; /* רקע כהה ויוקרתי */
+            background-color: #0a0a0a;
             color: #ffffff;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
@@ -43,7 +55,6 @@
             gap: 20px;
         }
 
-        /* עיצוב הלוגו/שם הסטודיו */
         .brand-name {
             font-size: 2.5rem;
             font-weight: 800;
@@ -55,7 +66,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* אנימציית טעינה עדינה */
         .loader {
             width: 40px;
             height: 40px;
@@ -93,7 +103,6 @@
 <body onload="performRedirect()">
 
     <div class="container">
-        <!-- אם יש לך לוגו, החלף את ה-H1 בתגית IMG -->
         <h1 class="brand-name">AVINTATTOO</h1>
         
         <div class="loader"></div>
@@ -101,7 +110,6 @@
         <div class="status-text">מעביר אותך לסטודיו...</div>
     </div>
 
-    <!-- קישור גיבוי במקרה של תקלה -->
     <a href="https://avintattoo.com/?utm_source=qr_code&utm_medium=print" class="fallback-link">
         לחץ כאן אם לא הועברת אוטומטית
     </a>
