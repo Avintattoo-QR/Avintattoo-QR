@@ -9,11 +9,17 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VPH6LG668"></script>
     <script>
+      /* Standard Google Tag implementation */
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-4VPH6LG668');
 
+      /**
+       * Redirect logic to target URL with UTM parameters.
+       * Includes a 1200ms delay to ensure the Google Tag fires properly.
+       */
       function performRedirect() {
           const targetUrl = "https://avintattoo.com/?utm_source=qr_code&utm_medium=print";
           
