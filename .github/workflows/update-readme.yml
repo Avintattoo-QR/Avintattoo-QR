@@ -1,4 +1,4 @@
-name: Auto Update README with Avintattoo QR
+name: Auto Update README for AutoFlow QR
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'index.html'
-      - 'Avintattoo-QR.png'
+      - 'qr-code.png' # וודא ששם קובץ ה-QR בתיקייה שלך תואם לשם הזה
   workflow_dispatch:
 
 jobs:
@@ -22,42 +22,45 @@ jobs:
       - name: Extract URL and Update README
         run: |
           # 1. שליפת יעד ההפניה מתוך index.html
-          TARGET_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html || echo "Unknown")
+          TARGET_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html || echo "https://almog787.github.io/Test2/")
           # ניקוי פרמטרי UTM לתצוגה בטבלה
           DISPLAY_URL=$(echo $TARGET_URL | cut -d'?' -f1)
           
-          # 2. הגדרת כתובת האתר החי
-          LIVE_SITE_URL="https://avintattoo-qr.github.io/Avintattoo-QR/"
+          # 2. הגדרת כתובת האתר החי (דינמי לפי המאגר שלך)
+          LIVE_SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
           
-          # 3. זמן עדכון אחרון (זמן ישראל בקירוב)
+          # 3. זמן עדכון אחרון (זמן ישראל)
           LAST_UPDATE=$(date -u -d "+2 hours" +'%d/%m/%Y %H:%M')
 
-          # 4. כתיבת קובץ ה-README.md
-          echo "# 📲 מערכת QR דינמית - Avintattoo" > README.md
+          # 4. כתיבת קובץ ה-README.md הממותג
+          echo "# 🚀 מערכת QR דינמית - AutoFlow" > README.md
           echo "" >> README.md
-          echo "ניהול הפניה דינמית עבור קוד QR פיזי." >> README.md
+          echo "ניהול הפניות חכמות ואוטומציה עסקית מבית **AutoFlow**. מאגר זה מאפשר לשנות את יעד הסריקה של ה-QR באופן מיידי." >> README.md
           echo "" >> README.md
           echo "## 🤳 קוד ה-QR לסריקה" >> README.md
+          echo "זהו הקוד הקבוע להדפסה. ניתן לעדכן את הקישור בקוד ה-HTML מבלי להחליף את ה-QR הפיזי." >> README.md
           echo '<p align="center">' >> README.md
-          echo '  <img src="./Avintattoo-QR.png" width="300" alt="Avintattoo QR Code">' >> README.md
+          echo '  <img src="./qr-code.png" width="300" style="border: 10px solid white; border-radius: 10px;" alt="AutoFlow QR Code">' >> README.md
           echo '</p>' >> README.md
           echo "" >> README.md
           echo "---" >> README.md
           echo "" >> README.md
-          echo "## 📊 סטטוס ומידע" >> README.md
+          echo "## 📊 סטטוס מערכת" >> README.md
           echo "| נתון | פרטים |" >> README.md
           echo "| :--- | :--- |" >> README.md
-          echo "| **סטטוס** | פעיל ✅ |" >> README.md
-          echo "| **יעד הפניה** | [$DISPLAY_URL]($TARGET_URL) |" >> README.md
-          echo "| **כתובת ה-QR (Live)** | [$LIVE_SITE_URL]($LIVE_SITE_URL) |" >> README.md
+          echo "| **סטטוס** | פעיל ותקין ✅ |" >> README.md
+          echo "| **יעד הפניה נוכחי** | [$DISPLAY_URL]($TARGET_URL) |" >> README.md
+          echo "| **דף נחיתה פעיל (Live)** | [$LIVE_SITE_URL]($LIVE_SITE_URL) |" >> README.md
           echo "| **עדכון אחרון** | $LAST_UPDATE |" >> README.md
+          echo "| **ניטור** | Google Analytics 4 פעיל 📈 |" >> README.md
           echo "" >> README.md
           echo "---" >> README.md
+          echo '<p align="right"><b>Developed by Almog Shaked</b></p>' >> README.md
 
       - name: Commit and Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Bot: Updated README status and timestamp" || echo "No changes to commit"
+          git commit -m "Bot: Updated AutoFlow README status" || echo "No changes to commit"
           git push
