@@ -1,67 +1,177 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avintattoo | Redirecting...</title>
-
-    <link rel="canonical" href="https://avintattoo.com/" />
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VPH6LG668"></script>
+    <!-- Google tag (gtag.js) - Unchanged -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHT161HLX5"></script>
     <script>
-      /* Standard Google Tag implementation */
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-4VPH6LG668');
-
-      /**
-       * Redirect logic to target URL with UTM parameters.
-       * Includes a 1200ms delay to ensure the Google Tag fires properly.
-       */
-      function performRedirect() {
-          const targetUrl = "https://avintattoo.com/?utm_source=qr_code&utm_medium=print";
-          
-          // Safety timeout for analytics to fire
-          setTimeout(function() {
-              window.location.href = targetUrl;
-          }, 1200);
-      }
+      gtag('config', 'G-ZHT161HLX5');
     </script>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to AutoFlow</title>
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap');
+
+        :root {
+            --primary: #0f172a; /* Dark sleek corporate */
+            --accent: #2563eb; /* Trust blue */
+            --text-body: #475569;
+            --bg-main: #f8fafc;
+            --border: #e2e8f0;
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-            font-family: sans-serif;
+            font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            text-align: center;
         }
-        .loader {
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top: 3px solid #fff;
+        
+        .container {
+            padding: 2.5rem 3rem;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .logo-svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
+            border-left-color: var(--accent); /* Brand color */
+            animation: spin 0.8s linear infinite;
+            margin: 20px auto 20px;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h2 { 
+            font-weight: 600; 
+            font-size: 1.25rem; 
+            margin-bottom: 8px; 
+            color: var(--primary);
+        }
+
+        p { 
+            font-size: 0.95rem; 
+            line-height: 1.5;
+        }
+
+        a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
     </style>
 </head>
-<body onload="performRedirect()">
-    <div style="text-align: center;">
-        <h1 style="letter-spacing: 2px;">AVINTATTOO</h1>
-        <div class="loader" style="margin: 20px auto;"></div>
-        <p>מעביר אותך לאתר...</p>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+             <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <span class="logo-text">AutoFlow</span>
+        </div>
+
+        <div class="spinner"></div>
+        <h2 id="status">Connecting to our website...</h2>
+        <p id="info">Please wait, we are redirecting you securely.</p>
+        <p id="fallback" style="display:none;">
+            If you are not redirected automatically, <a id="manual-link" href="#">click here</a>.
+        </p>
     </div>
 
-    <a href="https://avintattoo.com/?utm_source=qr_code&utm_medium=print" 
-       style="position: fixed; bottom: 20px; color: #444; text-decoration: none; font-size: 12px;">
-       לחץ כאן אם לא הועברת אוטומטית
-    </a>
+    <script>
+        /**
+         * Dynamic Redirect Logic with Tracking Support
+         * This logic remains unchanged as requested.
+         */
+        async function initRedirect() {
+            const statusText = document.getElementById('status');
+            const infoText = document.getElementById('info');
+            const fallback = document.getElementById('fallback');
+            const manualLink = document.getElementById('manual-link');
+
+            try {
+                // Fetch target URL from config.txt with cache-busting
+                const response = await fetch('config.txt?v=' + Date.now());
+
+                if (!response.ok) throw new Error('Config file not found or inaccessible');
+
+                const targetUrl = (await response.text()).trim();
+
+                if (targetUrl && (targetUrl.startsWith('http://') || targetUrl.startsWith('https://'))) {
+                    manualLink.href = targetUrl;
+
+                    // Delay redirect to ensure Analytics tag fires
+                    setTimeout(() => {
+                        window.location.replace(targetUrl);
+                    }, 1500);
+
+                    // Show fallback link after 5 seconds if needed
+                    setTimeout(() => {
+                        fallback.style.display = 'block';
+                    }, 5000);
+                } else {
+                    // Handle invalid URL format in config file
+                    statusText.innerText = "Configuration Error";
+                    infoText.innerText = "The target URL in the configuration file is not valid.";
+                }
+
+            } catch (error) {
+                console.error('Redirect Error:', error);
+                statusText.innerText = "Service Unavailable";
+                infoText.innerText = "We couldn't connect to the requested page. Please try again later.";
+            }
+        }
+
+        // Execute when page is fully loaded
+        window.onload = initRedirect;
+    </script>
 </body>
 </html>
