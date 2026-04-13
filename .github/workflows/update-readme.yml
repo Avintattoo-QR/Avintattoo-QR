@@ -55,7 +55,7 @@ jobs:
           echo "| **ניטור** | Google Analytics 4 פעיל 📈 |" >> README.md
           echo "" >> README.md
           echo "---" >> README.md
-          echo '<p align="right"><b>Developed by Almog Shaked</b></p>' >> README.md
+          echo '<p align="right"><b>Developed by Almog787 </b></p>' >> README.md
 
       - name: Commit and Push changes
         run: |
