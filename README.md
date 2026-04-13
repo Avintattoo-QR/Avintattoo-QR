@@ -13,8 +13,8 @@
 | נתון | פרטים |
 | :--- | :--- |
 | **סטטוס** | פעיל ✅ |
-| **יעד הפניה** | [https://avintattoo.com/](https://avintattoo.com/?utm_source=qr_code&utm_medium=print) |
+| **יעד הפניה** | [Unknown](Unknown) |
 | **כתובת ה-QR (Live)** | [https://avintattoo-qr.github.io/Avintattoo-QR/](https://avintattoo-qr.github.io/Avintattoo-QR/) |
-| **עדכון אחרון** | 27/02/2026 08:22 |
+| **עדכון אחרון** | 13/04/2026 21:41 |
 
 ---
