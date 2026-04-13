@@ -16,7 +16,7 @@
 | **סטטוס** | פעיל ותקין ✅ |
 | **יעד הפניה נוכחי** | [https://almog787.github.io/Test2/](https://almog787.github.io/Test2/?utm_source=qr_code&utm_medium=redirect_page) |
 | **דף נחיתה פעיל (Live)** | [https://Avintattoo-QR.github.io/Avintattoo-QR/](https://Avintattoo-QR.github.io/Avintattoo-QR/) |
-| **עדכון אחרון** | 13/04/2026 21:51 |
+| **עדכון אחרון** | 13/04/2026 21:54 |
 | **ניטור** | Google Analytics 4 פעיל 📈 |
 
 ---
