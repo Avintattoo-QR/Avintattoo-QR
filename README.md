@@ -13,8 +13,8 @@
 | נתון | פרטים |
 | :--- | :--- |
 | **סטטוס** | פעיל ✅ |
-| **יעד הפניה** | [Unknown](Unknown) |
+| **יעד הפניה** | [https://almog787.github.io/Test2/](https://almog787.github.io/Test2/?utm_source=qr_code&utm_medium=redirect_page) |
 | **כתובת ה-QR (Live)** | [https://avintattoo-qr.github.io/Avintattoo-QR/](https://avintattoo-qr.github.io/Avintattoo-QR/) |
-| **עדכון אחרון** | 13/04/2026 21:41 |
+| **עדכון אחרון** | 13/04/2026 21:49 |
 
 ---
