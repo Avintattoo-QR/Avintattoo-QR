@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoFlow | מעביר אותך לאתר...</title>
+    <title>Avintattoo | Redirecting...</title>
 
-    <link rel="canonical" href="https://almog787.github.io/Test2/" />
+    <link rel="canonical" href="https://avintattoo.com/" />
 
-    <!-- Google Tag (שמירה על הקוד המקורי שלך) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VPH6LG668"></script>
     <script>
+      /* Standard Google Tag implementation */
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -17,12 +17,13 @@
       gtag('config', 'G-4VPH6LG668');
 
       /**
-       * לוגיקת הפניה לאתר AutoFlow
-       * השהיה של 1200ms כדי להבטיח שליחת נתוני אנליטיקס
+       * Redirect logic to target URL with UTM parameters.
+       * Includes a 1200ms delay to ensure the Google Tag fires properly.
        */
       function performRedirect() {
-          const targetUrl = "https://almog787.github.io/Test2/?utm_source=qr_code&utm_medium=redirect_page";
+          const targetUrl = "https://avintattoo.com/?utm_source=qr_code&utm_medium=print";
           
+          // Safety timeout for analytics to fire
           setTimeout(function() {
               window.location.href = targetUrl;
           }, 1200);
@@ -30,97 +31,36 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap');
-
         body {
-            background-color: #f8fafc; /* רקע בהיר ומודרני */
-            color: #0f172a; /* כחול כהה של המותג */
-            font-family: 'Heebo', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
-
-        .card {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            border: 1px solid #e2e8f0;
-            max-width: 90%;
-            width: 350px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .logo-svg {
+        .loader {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid #fff;
+            border-radius: 50%;
             width: 30px;
             height: 30px;
-            color: #2563eb;
-        }
-
-        .brand-name {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: -0.02em;
-        }
-
-        .loader {
-            border: 3px solid #e2e8f0;
-            border-top: 3px solid #2563eb; /* כחול אקצנט */
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
             animation: spin 1s linear infinite;
-            margin: 20px auto;
         }
-
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        p {
-            color: #64748b;
-            font-size: 1rem;
-        }
-
-        .manual-link {
-            position: fixed;
-            bottom: 30px;
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.2s;
-        }
-
-        .manual-link:hover {
-            color: #2563eb;
-        }
     </style>
 </head>
 <body onload="performRedirect()">
-    <div class="card">
-        <div class="logo-container">
-            <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-            </svg>
-            <span class="brand-name">AutoFlow</span>
-        </div>
-        
-        <div class="loader"></div>
-        <p>מתחברים לאוטומציה חכמה...</p>
+    <div style="text-align: center;">
+        <h1 style="letter-spacing: 2px;">AVINTATTOO</h1>
+        <div class="loader" style="margin: 20px auto;"></div>
+        <p>מעביר אותך לאתר...</p>
     </div>
 
-    <a href="https://almog787.github.io/Test2/?utm_source=qr_code&utm_medium=redirect_page" class="manual-link">
+    <a href="https://avintattoo.com/?utm_source=qr_code&utm_medium=print" 
+       style="position: fixed; bottom: 20px; color: #444; text-decoration: none; font-size: 12px;">
        לחץ כאן אם לא הועברת אוטומטית
     </a>
 </body>
