@@ -1,6 +1,6 @@
 # 🚀 מערכת QR דינמית - AutoFlow
 
-ניהול הפניות חכמות ואוטומציה עסקית מבית **AutoFlow**. מאגר זה מאפשר לשנות את יעד הסריקה של ה-QR באופן מיידי.
+ניהול הפניות חכמות ואוטומציה עסקית מבית **AutoFlow**. מאגר זה מאפשר לשנות את יעד הסריקה של ה-QR באופן מיידי דרך שינוי הקישור ב-index.html.
 
 ## 🤳 קוד ה-QR לסריקה
 זהו הקוד הקבוע להדפסה. ניתן לעדכן את הקישור בקוד ה-HTML מבלי להחליף את ה-QR הפיזי.
@@ -14,10 +14,10 @@
 | נתון | פרטים |
 | :--- | :--- |
 | **סטטוס** | פעיל ותקין ✅ |
-| **יעד הפניה נוכחי** | [https://almog787.github.io/Test2/](https://almog787.github.io/Test2/) |
+| **יעד הפניה נוכחי** | [https://avintattoo.com/](https://avintattoo.com/) |
 | **דף נחיתה פעיל (Live)** | [https://Avintattoo-QR.github.io/Avintattoo-QR/](https://Avintattoo-QR.github.io/Avintattoo-QR/) |
-| **עדכון אחרון** | 14/04/2026 17:39 |
-| **ניטור** | Google Analytics 4 פעיל 📈 |
+| **עדכון אחרון** | 17/04/2026 00:19 |
+| **ניטור** | Google Analytics 4 (G-4VPH6LG668) 📈 |
 
 ---
 <p align="right"><b>Developed by Almog787 </b></p>
