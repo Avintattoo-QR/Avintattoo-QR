@@ -17,7 +17,7 @@
 | **יעד הפניה נוכחי** | [https://avintattoo.com/](https://avintattoo.com/) |
 | **דף נחיתה פעיל (Live)** | [https://Avintattoo-QR.github.io/Avintattoo-QR/](https://Avintattoo-QR.github.io/Avintattoo-QR/) |
 | **עדכון אחרון** | 17/04/2026 00:19 |
-| **ניטור** | Google Analytics 4 (G-4VPH6LG668) 📈 |
+| **ניטור** | Google Analytics 4 (G-) 📈 |
 
 ---
 <p align="right"><b>Developed by Almog787 </b></p>
