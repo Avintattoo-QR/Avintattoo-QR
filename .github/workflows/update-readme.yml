@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'index.html'
-      - 'qr-code.png' # וודא ששם קובץ ה-QR בתיקייה שלך תואם לשם הזה
+      - 'qr-code.png' 
   workflow_dispatch:
 
 jobs:
@@ -21,21 +21,28 @@ jobs:
 
       - name: Extract URL and Update README
         run: |
-          # 1. שליפת יעד ההפניה מתוך index.html
-          TARGET_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html || echo "https://almog787.github.io/Test2/")
-          # ניקוי פרמטרי UTM לתצוגה בטבלה
+          # 1. שליפת יעד ההפניה מתוך index.html - מותאם לקוד החדש
+          # מחפש את המחרוזת בתוך const targetUrl = "..."
+          TARGET_URL=$(grep -oP 'const targetUrl = "\K[^"]+' index.html | head -1)
+          
+          # אם לא נמצא URL, נשתמש בברירת מחדל כדי לא לשבור את ה-README
+          if [ -z "$TARGET_URL" ]; then
+            TARGET_URL="https://avintattoo.com/"
+          fi
+
+          # ניקוי פרמטרי UTM לתצוגה יפה בטבלה
           DISPLAY_URL=$(echo $TARGET_URL | cut -d'?' -f1)
           
-          # 2. הגדרת כתובת האתר החי (דינמי לפי המאגר שלך)
+          # 2. הגדרת כתובת האתר החי (GitHub Pages)
           LIVE_SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
           
-          # 3. זמן עדכון אחרון (זמן ישראל)
-          LAST_UPDATE=$(date -u -d "+2 hours" +'%d/%m/%Y %H:%M')
+          # 3. זמן עדכון אחרון (זמן ישראל המשוער UTC+3)
+          LAST_UPDATE=$(date -u -d "+3 hours" +'%d/%m/%Y %H:%M')
 
           # 4. כתיבת קובץ ה-README.md הממותג
           echo "# 🚀 מערכת QR דינמית - AutoFlow" > README.md
           echo "" >> README.md
-          echo "ניהול הפניות חכמות ואוטומציה עסקית מבית **AutoFlow**. מאגר זה מאפשר לשנות את יעד הסריקה של ה-QR באופן מיידי." >> README.md
+          echo "ניהול הפניות חכמות ואוטומציה עסקית מבית **AutoFlow**. מאגר זה מאפשר לשנות את יעד הסריקה של ה-QR באופן מיידי דרך שינוי הקישור ב-index.html." >> README.md
           echo "" >> README.md
           echo "## 🤳 קוד ה-QR לסריקה" >> README.md
           echo "זהו הקוד הקבוע להדפסה. ניתן לעדכן את הקישור בקוד ה-HTML מבלי להחליף את ה-QR הפיזי." >> README.md
@@ -52,7 +59,7 @@ jobs:
           echo "| **יעד הפניה נוכחי** | [$DISPLAY_URL]($TARGET_URL) |" >> README.md
           echo "| **דף נחיתה פעיל (Live)** | [$LIVE_SITE_URL]($LIVE_SITE_URL) |" >> README.md
           echo "| **עדכון אחרון** | $LAST_UPDATE |" >> README.md
-          echo "| **ניטור** | Google Analytics 4 פעיל 📈 |" >> README.md
+          echo "| **ניטור** | Google Analytics 4 (G-4VPH6LG668) 📈 |" >> README.md
           echo "" >> README.md
           echo "---" >> README.md
           echo '<p align="right"><b>Developed by Almog787 </b></p>' >> README.md
@@ -62,5 +69,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Bot: Updated AutoFlow README status" || echo "No changes to commit"
+          git commit -m "Bot: Updated AutoFlow README status with current redirect" || echo "No changes to commit"
           git push
