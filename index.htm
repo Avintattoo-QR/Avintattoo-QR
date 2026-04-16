@@ -9,23 +9,24 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VPH6LG668"></script>
     <script>
-      /* Standard Google Tag implementation */
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-4VPH6LG668');
+      // הגדרת המזהה שסיפקת
+      gtag('config', 'G-4VPH6LG668', {
+          'transport_type': 'beacon' // שימוש ב-beacon מבטיח שהנתונים יישלחו גם אם הדף נסגר מהר
+      });
 
       /**
-       * Redirect logic to target URL with UTM parameters.
-       * Includes a 1200ms delay to ensure the Google Tag fires properly.
+       * פונקציית ההפניה
+       * השהיה של 1200ms מאפשרת ל-Google Analytics מספיק זמן לשלוח את הנתון
        */
       function performRedirect() {
           const targetUrl = "https://avintattoo.com/?utm_source=qr_code&utm_medium=print";
           
-          // Safety timeout for analytics to fire
           setTimeout(function() {
-              window.location.href = targetUrl;
+              window.location.replace(targetUrl); // שימוש ב-replace כדי לא לשבור את כפתור ה"חזור" בדפדפן
           }, 1200);
       }
     </script>
@@ -34,34 +35,61 @@
         body {
             background-color: #0a0a0a;
             color: #ffffff;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            text-align: center;
         }
         .loader {
             border: 3px solid rgba(255,255,255,0.1);
-            border-top: 3px solid #fff;
+            border-top: 3px solid #ffffff;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             animation: spin 1s linear infinite;
+            margin: 20px auto;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        h1 {
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        p {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        .manual-link {
+            position: fixed;
+            bottom: 30px;
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s;
+        }
+        .manual-link:hover {
+            color: #fff;
+        }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
     </style>
 </head>
 <body onload="performRedirect()">
-    <div style="text-align: center;">
-        <h1 style="letter-spacing: 2px;">AVINTATTOO</h1>
-        <div class="loader" style="margin: 20px auto;"></div>
-        <p>מעביר אותך לאתר...</p>
+
+    <div>
+        <h1>AVINTATTOO</h1>
+        <div class="loader"></div>
+        <p>מעביר אותך לאתר הרשמי...</p>
     </div>
 
-    <a href="https://avintattoo.com/?utm_source=qr_code&utm_medium=print" 
-       style="position: fixed; bottom: 20px; color: #444; text-decoration: none; font-size: 12px;">
-       לחץ כאן אם לא הועברת אוטומטית
+    <a href="https://avintattoo.com/?utm_source=qr_code&utm_medium=print" class="manual-link">
+       לא הועברת? לחץ כאן למעבר ידני
     </a>
+
 </body>
 </html>
